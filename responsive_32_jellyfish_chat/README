@@ -1,0 +1,47 @@
+# 🪼 Realistic Jellyfish Animation
+
+A mesmerizing **pure CSS jellyfish animation** that simulates the natural pulsing, tentacle motion, and floating movement of a real jellyfish.  
+This project uses only **HTML and CSS** — no JavaScript or external libraries — to create a smooth and lifelike underwater effect.
+
+![Jellyfish Preview](./preview.gif)
+
+---
+
+## 🌊 Features
+
+- **Realistic Jellyfish Motion**  
+  Smooth pulsating bell, oscillating tentacles, and organic floating movement.
+  
+- **Soft Neon Glow**  
+  Gradient colors with subtle transparency for a glowing underwater look.
+
+- **Pure CSS Animation**  
+  Uses CSS keyframes, transforms, and timing delays for natural behavior.
+
+- **Responsive and Lightweight**  
+  Works smoothly on modern browsers and adapts to any screen size.
+
+---
+
+## 🧠 How It Works
+
+The jellyfish is built using layered `<div>` elements styled to form:
+- A **bell** (top dome)
+- A **rim** (lower edge of the bell)
+- **Frills** (soft tissue below the rim)
+- Multiple **tentacles** that sway and wobble independently
+
+Animations are controlled with keyframes:
+- `pulse` – simulates contraction and relaxation of the bell  
+- `tentacleWave` – creates smooth tentacle sway  
+- `tentacleWobble` – adds subtle horizontal oscillation  
+- `floatAround` – makes the jellyfish drift across the screen
+
+---
+
+## ⚙️ Setup
+
+1. **Clone this repository**
+   ```bash
+   git clone https://github.com/<your-username>/css-jellyfish-animation.git
+   cd css-jellyfish-animation
