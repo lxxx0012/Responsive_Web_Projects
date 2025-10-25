@@ -1,0 +1,67 @@
+Slices & Spritzers Pizzeria Online Menu
+
+🍕 Project Overview
+
+This is a single-page web application designed as a modern, responsive online menu and ordering interface for a fictional pizzeria, "Slices & Spritzers."
+
+The application focuses on demonstrating frontend functionality, including a working shopping cart with real-time tax calculation.
+
+✨ Key Features
+
+Fully Responsive Design: Optimized for seamless viewing and interaction across mobile, tablet, and desktop devices using Tailwind CSS.
+
+Interactive Menu: Displays signature pizza items with dedicated "Add to Cart" functionality.
+
+Sliding Shopping Cart: A responsive side modal displays cart contents, subtotal, taxes, and the final order total.
+
+Real-time Tax Calculation: The JavaScript logic accurately applies the Ontario Harmonized Sales Tax (HST) of 13% to the subtotal before calculating the final total.
+
+Cart Management: Users can add multiple items and remove individual items directly from the cart.
+
+Smooth Navigation: Scroll links ensure a smooth user experience when navigating between sections.
+
+⚙️ Technologies Used
+
+Technology
+
+Purpose
+
+HTML5
+
+Structure and Semantic Content
+
+Tailwind CSS
+
+Utility-first CSS framework for styling and responsiveness
+
+JavaScript (ES6+)
+
+Frontend logic, DOM manipulation, cart management, and price calculation
+
+Font Awesome
+
+Icons (e.g., shopping cart, close button)
+
+🚀 Getting Started
+
+Since this is a single, self-contained HTML file, running the project is straightforward:
+
+Clone the repository (once uploaded to GitHub) or download the pizza_place.html file.
+
+Open the file (pizza_place.html) directly in any modern web browser.
+
+The application requires no backend, server, or build step. All necessary scripts (Tailwind CSS, Font Awesome, and custom JavaScript) are included directly within the file.
+
+💰 Tax Logic
+
+The JavaScript code includes a constant for the Ontario HST rate and applies it to the cart's subtotal in the updateCartUI function:
+
+// Define the tax rate for Ontario (13% HST)
+const ONTARIO_HST_RATE = 0.13;
+
+// ... inside updateCartUI function
+const tax = subtotal * ONTARIO_HST_RATE;
+const finalTotal = subtotal + tax;
+
+
+This ensures all prices displayed in the final total are inclusive of the mandatory provincial tax.
