@@ -1,5 +1,5 @@
 📁 Responsive Web Projects Collection
-Welcome to my curated set of 37 responsive web design projects, built using HTML, CSS, and JavaScript. Each project demonstrates a unique layout, component, or interaction pattern optimized for mobile-first design and cross-browser compatibility.
+Welcome to my curated set of responsive web design projects, built using HTML, CSS, and JavaScript. Each project demonstrates a unique layout, component, or interaction pattern optimized for mobile-first design and cross-browser compatibility.
 
 🧱 Folder Structure
 Each folder is named responsive_01 through responsive_37 and contains:
