@@ -1,0 +1,38 @@
+Project Overview
+
+This is a simple, captivating animation built entirely with HTML and CSS. It features a glowing, 
+neon jellyfish that slowly floats and pulses across a dark, deep-sea-like background, demonstrating 
+the creative power of CSS keyframes and box-shadow effects.
+
+Key Features:
+Pure CSS Animation: No JavaScript required for movement or glow.
+
+Neon Effect: Created using multiple, layered box-shadow properties on the blue hue.
+
+Floating Motion: Uses the @keyframes rule to simulate gentle, organic underwater movement.
+
+Pulsing Glow: The jellyfish subtly brightens and scales, adding to the lifelike effect.
+
+Getting Started
+To view or use this project, follow these simple steps.
+
+Prerequisites
+You only need a modern web browser (like Chrome, Firefox, or Edge).
+
+Code Highlights
+The core of the animation is defined by three key @keyframes rules in style.css:
+Keyframe, Target Element, Purpose
+float, .jellyfish-container, "Creates the slow, sweeping, vertical movement across the screen."
+glow, .jellyfish, Subtly changes the element's overall brightness for a flicker effect.
+pulse, .bell, Slightly scales the jellyfish bell to mimic organic expansion and contraction.
+
+Customization
+Want to change the color?
+
+Edit the style.css file and change the color code #0ff (cyan) to any hexadecimal color you like!
+
+Example:
+
+Pink Neon: Use #f0f
+
+Green Neon: Use #0f0
