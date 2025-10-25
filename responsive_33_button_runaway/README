@@ -1,0 +1,63 @@
+🏃 The Fleeing Button Game (Login Gated)
+
+This is a fun, single-file web application that combines a simple user authentication demonstration with an interactive game where the main objective is to "catch" a button that actively moves away from the mouse cursor.
+
+🚀 Features
+
+Client-Side Login Gating: A basic login form that requires specific credentials before unlocking the game.
+
+Failed Attempt Lockout: The system disables the login button after 3 failed attempts to demonstrate basic security flow control.
+
+Interactive "Fleeing" Button: Once logged in, the application switches to a full-screen game area where the main button runs away from the mouse pointer whenever the cursor enters a defined "danger zone" radius.
+
+Real-time Messaging: A message box updates dynamically to comment on the user's distance from the button.
+
+🔑 Login Credentials (Hardcoded)
+
+For demonstration purposes, the application uses these hardcoded credentials:
+
+Field
+
+Value
+
+Username
+
+user
+
+Password
+
+password
+
+Lockout: If any combination is entered incorrectly 3 times, the login button will be disabled.
+
+⚙️ How It Works
+
+This entire application is built as a single index.html file, following a self-contained architecture:
+
+HTML Structure: Defines two primary sections: the #login-form-container (visible initially) and the #fleeing-game-container (hidden initially).
+
+CSS Styling: All styling, including the use of Tailwind CSS, is embedded in the <style> tag. It ensures a responsive, centered layout and defines the absolute positioning needed for the button to move.
+
+JavaScript Logic: Embedded in the <script> tag.
+
+Login Handler: The logic checks the input fields against the hardcoded user and password. It increments loginAttempts on failure and disables the button after the third attempt.
+
+Gatekeeper: On successful login, the script hides the login form and calls setupFleeingButtonGame().
+
+Fleeing Logic (mousemove): The setupFleeingButtonGame() function activates the mousemove event listener on the container. This function continuously calculates the distance between the mouse and the button's center. If the distance is less than the dangerRadius (150px), it mathematically calculates a new position to push the button away from the cursor.
+
+⚠️ IMPORTANT SECURITY NOTE
+
+This application is for demonstration and entertainment purposes only.
+
+DO NOT use this code for any project that requires real user authentication or secure data.
+
+The login process is entirely client-side, meaning:
+
+Credentials (user and password) are visible in the source code.
+
+There is no server-side validation or encryption.
+
+It provides zero security for a real application.
+
+For any actual project, authentication must be handled by a secure backend service (e.g., Firebase, Auth0, or a custom server implementation).
