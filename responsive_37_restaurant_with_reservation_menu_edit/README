@@ -1,0 +1,31 @@
+# 🍽️ The Culinary Corner - Full-Stack Restaurant Application
+
+This project is a dynamic Single-Page Application (SPA) designed for a modern restaurant. It features a customer-facing menu, a reservation form, and a secure backend administration dashboard for managing inventory and bookings.
+
+The application is built using the **MERN stack without React** (MongoDB, Express, Node.js), providing a robust, permanent, and secure data solution.
+
+## 🚀 Features
+
+### Customer-Facing
+* **Dynamic Menu Display:** Fetches the current, visible menu items directly from the MongoDB database.
+* **Reservation Form:** Submits booking details to the secure API.
+* **Single-Page Navigation:** Seamless switching between Menu, Reservations, and Contact views using client-side JavaScript.
+
+### Administration
+* **Secure API Endpoints:** Menu editing and reservation viewing endpoints are protected by server-side logic (middleware).
+* **Menu Management:** Administrators can add, delete, and toggle the visibility of menu items.
+* **Reservation Viewer:** (Future feature) Securely view all customer reservations.
+
+---
+
+## 💻 Technical Stack
+
+| Component | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Frontend (Client)** | HTML, CSS, Vanilla JavaScript (ES6) | Client-side logic, SPA routing, and fetching data via API. |
+| **Backend (Server)** | Node.js, Express.js | High-performance API server and business logic handler. |
+| **Database** | MongoDB | Persistent, NoSQL storage for menu items and reservations. |
+| **ODM / ORM** | Mongoose | Provides data modeling, schema validation, and easy interaction with MongoDB. |
+| **Security** | CORS, Basic Middleware | Enables secure cross-origin communication and basic authorization checks. |
+
+---
