@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slies & Spritzers Pizzeria</title>
+    <!-- Use Tailwind CSS for rapid styling -->
+     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLwQj1tWz7w5w55+24+w2D6w8+R4dJ+K4V9ZzT1f8+pI7+wE5+N3O4GjO4vF5w6p8+" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-red-600">Slices & Spritzers</a>
+            <div class="flex items-center space-x-4">
+                <div class="space-x-4 hidden md:flex">
+                    <a href="#menu" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Menu</a>
+                    <a href="#about" class="text-gray-600 hover:text-red-600 transition-colors duration-300">About</a>
+                    <a href="#contact" class="text-gray-600 hover:text-red-600 transition-colors duration-300">Contact</a>
+                </div>
+                <button id="cart-btn" class="text-gray-600 hover:text-red-600 relative">
+                    <i class="fas fa-shopping-cart text-2xl"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                </button>
+                <button id="mobile-menu-btn" class="text-gray-600 hover:text-red-600 md:hidden focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu (initially hidden) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
+            <a href="#menu" class="block px-6 py-2 text-gray-600 hover:text-red-600">Menu</a>
+            <a href="#about" class="block px-6 py-2 text-gray-600 hover:text-red-600">About</a>
+            <a href="#contact" class="block px-6 py-2 text-gray-600 hover:text-red-600">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="section-background text-white flex items-center justify-center text-center">
+        <div class="px-6 py-24 rounded-2xl max-w-2xl mx-auto backdrop-blur-sm bg-black bg-opacity-40">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-4">
+                Authentic, Hand-Tossed Pizza
+            </h1>
+            <p class="text-xl sm:text-2xl font-light mb-8 opacity-90">
+                Taste the tradition in every slice. Made with the freshest ingredients and a whole lot of love.
+            </p>
+            <a href="#menu" class="inline-block bg-red-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-red-700 transition-all duration-300 transform hover:scale-105">
+                Explore Our Menu
+            </a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-center text-4xl font-bold mb-12 text-red-600">Our Signature Pizzas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Pizza Card 1 -->
+                <div class="pizza-card bg-gray-50 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300">
+                    <img src="https://placehold.co/600x400/FF5733/FFF?text=Margherita" alt="Margherita Pizza" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2" data-name="Margherita Classic">Margherita Classic</h3>
+                        <p class="text-gray-700 mb-4">San Marzano tomatoes, fresh mozzarella, and fragrant basil.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-red-600" data-price="14.99">$14.99</span>
+                            <button class="add-to-cart-btn bg-red-600 text-white font-medium py-2 px-6 rounded-full shadow-lg hover:bg-red-700 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza Card 2 -->
+                <div class="pizza-card bg-gray-50 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300">
+                    <img src="https://placehold.co/600x400/DAF7A6/000?text=Pepperoni" alt="Pepperoni Pizza" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2" data-name="The Pepperoni Dream">The Pepperoni Dream</h3>
+                        <p class="text-gray-700 mb-4">Savory pepperoni, spicy sausage, and creamy mozzarella.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-red-600" data-price="16.50">$16.50</span>
+                            <button class="add-to-cart-btn bg-red-600 text-white font-medium py-2 px-6 rounded-full shadow-lg hover:bg-red-700 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza Card 3 -->
+                <div class="pizza-card bg-gray-50 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300">
+                    <img src="https://placehold.co/600x400/900C3F/FFF?text=Veggie" alt="Vegetable Pizza" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2" data-name="Garden Harvest">Garden Harvest</h3>
+                        <p class="text-gray-700 mb-4">Fresh peppers, onions, mushrooms, and black olives on a bed of rich sauce.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-red-600" data-price="15.99">$15.99</span>
+                            <button class="add-to-cart-btn bg-red-600 text-white font-medium py-2 px-6 rounded-full shadow-lg hover:bg-red-700 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-red-600 mb-6">Our Story</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-10">
+                <div class="w-full md:w-1/2 lg:w-1/3">
+                    <img src="https://placehold.co/600x400/F4D03F/000?text=Chef+Cooking" alt="Chef Making Pizza" class="rounded-2xl shadow-xl w-full h-auto">
+                </div>
+                <div class="w-full md:w-1/2 lg:w-2/3 text-left">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        Slices & Spritzers was founded on a simple principle: to bring the authentic flavors of Naples to our community. Our pizzas are crafted with passion, using traditional techniques and a secret family dough recipe that has been perfected over generations.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        We believe that great food starts with great ingredients. That's why we source the freshest local produce and the finest imported cheeses. Every pizza is a work of art, baked to perfection in our traditional brick oven.  Come and taste the difference!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-red-600 mb-6">Find Us</h2>
+            <div class="max-w-xl mx-auto text-gray-700">
+                <p class="text-lg mb-2">123 Pizza Lane, Foodie City, 12345</p>
+                <p class="text-lg mb-2">Phone: <a href="tel:+15551234567" class="text-red-600 hover:underline">(555) 123-4567</a></p>
+                <p class="text-lg mb-6">Email: <a href="mailto:info@slicesandspritzers.com" class="text-red-600 hover:underline">info@slicesandspritzers.com</a></p>
+            </div>
+            <div class="mt-8">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.243534832502!2d144.96305781531633!3d-37.8141079797517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675306d6420!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1614745814885!5m2!1sen!2sau"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    class="rounded-2xl shadow-xl"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Slices & Spritzers. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed top-0 right-0 h-full w-full sm:w-80 bg-white shadow-lg z-50 transform translate-x-full overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-red-600">Your Cart</h3>
+                <button id="close-cart-btn" class="text-gray-600 hover:text-red-600">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <ul id="cart-items" class="space-y-4 mb-6">
+                <!-- Cart items will be injected here by JavaScript -->
+            </ul>
+            <div id="cart-empty-message" class="text-gray-500 text-center py-10">Your cart is empty.</div>
+            <div class="pt-4 space-y-2">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-600">Subtotal:</span>
+                    <span id="cart-subtotal" class="font-bold">$0.00</span>
+                </div>
+                <div class="flex justify-between items-center border-b pb-2">
+                    <span class="text-gray-600">Taxes (HST 13%):</span>
+                    <span id="cart-tax" class="font-bold">$0.00</span>
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                    <span class="text-lg font-semibold">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold text-red-600">$0.00</span>
+                </div>
+            </div>
+            <button id="checkout-btn" class="w-full mt-6 bg-red-600 text-white font-medium py-3 px-6 rounded-full shadow-lg hover:bg-red-700 transition-colors">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+    
+    <!-- Message Box for "Order" button and other notifications -->
+    <div id="message-box" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 p-4 rounded-xl shadow-2xl bg-red-600 text-white font-medium hidden z-50 transition-all duration-300">
+        Item added to your order!
+    </div>
+
+           <script src="script.js"></script>
+    
+</body>
+</html>

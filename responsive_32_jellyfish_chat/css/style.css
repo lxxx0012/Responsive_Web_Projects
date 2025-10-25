@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at bottom, #05060a, #0b0f1c 60%, #0c1630);
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Jellyfish container moves around the screen */
+.jellyfish {
+  position: absolute;
+  width: 160px;
+  height: 220px;
+  animation: floatAround 20s ease-in-out infinite alternate;
+}
+
+/* Bell */
+.bell {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 140px;
+  height: 100px;
+  background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.7), rgba(34, 211, 238, 0.2));
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  transform: translateX(-50%);
+  animation: pulse 3s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.6), 0 0 35px rgba(34, 211, 238, 0.4);
+}
+
+/* Rim below bell */
+.rim {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  width: 150px;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.6), rgba(34, 211, 238, 0));
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
+}
+
+/* Frills below rim */
+.frill {
+  position: absolute;
+  top: 105px;
+  left: 50%;
+  width: 120px;
+  height: 30px;
+  background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.5), rgba(124, 58, 237, 0));
+  border-radius: 50%;
+  transform: translateX(-50%);
+  filter: blur(6px);
+}
+
+/* Tentacles */
+.tentacles {
+  position: absolute;
+  top: 135px;
+  left: 50%;
+  width: 120px;
+  height: 150px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+}
+
+.tentacle {
+  width: 6px;
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(124,58,237,0.7), rgba(34,211,238,0));
+  border-radius: 50%;
+  transform-origin: top center;
+  box-shadow: 0 0 8px rgba(124,58,237,0.5);
+  animation: tentacleWave 4s ease-in-out infinite, tentacleWobble 3s ease-in-out infinite alternate;
+}
+
+/* Tentacle random offsets */
+.t1 { animation-delay: 0s, 0s; }
+.t2 { animation-delay: 0.3s, 0.2s; }
+.t3 { animation-delay: 0.6s, 0.4s; }
+.t4 { animation-delay: 0.9s, 0.6s; }
+.t5 { animation-delay: 1.2s, 0.8s; }
+.t6 { animation-delay: 1.5s, 1s; }
+.t7 { animation-delay: 1.8s, 1.2s; }
+
+/* Animations */
+@keyframes pulse {
+  0%,100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(0.9, 0.8); }
+}
+
+@keyframes tentacleWave {
+  0%,100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes tentacleWobble {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(2px); }
+  50% { transform: translateX(-2px); }
+  75% { transform: translateX(1px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes floatAround {
+  0%   { transform: translate(10vw, 10vh) scale(1); }
+  25%  { transform: translate(60vw, 20vh) scale(1.02); }
+  50%  { transform: translate(50vw, 60vh) scale(0.98); }
+  75%  { transform: translate(20vw, 70vh) scale(1.01); }
+  100% { transform: translate(10vw, 10vh) scale(1); }
+}

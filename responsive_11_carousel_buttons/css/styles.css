@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.carousel {
+    position: relative; /* Establishes a positioning context */
+    overflow: hidden; /* Hides elements outside the visible area */
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%; /* Positions the button vertically */
+    transform: translateY(-50%); /* Centers the button */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white; /* Text color */
+    border: none; /* Removes default button border */
+    padding: 10px; /* Adds padding for a better look */
+    cursor: pointer; /* Pointer cursor to indicate it's clickable */
+    z-index: 10; /* Ensures the button is above the images */
+}
+
+.carousel-button.left {
+    left: 10px; /* Positions the left button */
+}
+
+.carousel-button.right {
+    right: 10px; /* Positions the right button */
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+    .carousel-item {
+        max-height: 250px;
+    }
+
+    .carousel-button {
+        padding: 5px; /* Adjusts padding for smaller screens */
+        display: none; /* Ensure this isn't hiding the buttons! */
+    }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Runaway Button</title>
+    <style>
+        body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+#fleeing-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#message-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(-100px);
+    background-color: #ffffff;
+    color: #4b5563;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+    text-align: center;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="fleeing-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+            Try to catch me!
+        </button>
+        <div id="message-box"></div>
+    </div>
+
+    <script>
+        const button = document.getElementById('fleeing-button');
+const container = document.querySelector('.container');
+const messageBox = document.getElementById('message-box');
+
+// Define a "danger zone" radius around the button
+const dangerRadius = 150;
+
+// Initial message to display
+const initialMessage = "I'm just a button, minding my own business.";
+messageBox.textContent = initialMessage;
+messageBox.style.opacity = 1;
+
+container.addEventListener('mousemove', (e) => {
+    const buttonRect = button.getBoundingClientRect();
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+    const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+
+    const deltaX = mouseX - buttonCenterX;
+    const deltaY = mouseY - buttonCenterY;
+
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+    if (distance < dangerRadius) {
+        // Mouse is in the danger zone, the button runs away
+        const moveAwayX = (buttonCenterX - mouseX) / distance * (dangerRadius - distance);
+        const moveAwayY = (buttonCenterY - mouseY) / distance * (dangerRadius - distance);
+
+        let newX = buttonRect.left + moveAwayX;
+        let newY = buttonRect.top + moveAwayY;
+
+        //  Boundary checks to keep the button within the container
+        const containerRect = container.getBoundingClientRect();
+        newX = Math.max(containerRect.left, Math.min(newX, containerRect.right - buttonRect.width));
+        newY = Math.max(containerRect.top, Math.min(newY, containerRect.bottom - buttonRect.height));
+
+        button.style.left = `${newX}px`;
+        button.style.top = `${newY}px`;
+
+        // Update message
+        messageBox.style.opacity = 1;
+        messageBox.textContent = "Hey, give me some space!";
+    } else {
+        // Mouse is far away, the message changes back
+        messageBox.style.opacity = 1;
+        messageBox.textContent = initialMessage;
+    }
+});
+
+// Handle mouse leaving the container to reset the message
+container.addEventListener('mouseleave', () => {
+    messageBox.textContent = initialMessage;
+});
+    </script>
+</body>
+</html>

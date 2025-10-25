@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy Loading Example</title>
+</head>
+<body>
+  <h1>Lazy Loading Example</h1>
+  <!-- Lazy-loaded image -->
+  <img 
+    src="images/an image.png" 
+    data-src="images/an image.png" 
+    alt="Beautiful Caravan" 
+    class="lazy-load" 
+    loading="lazy" 
+    width="600" 
+    height="400">
+
+  <script>
+    // Optional JavaScript for advanced lazy loading support
+    document.addEventListener("DOMContentLoaded", function () {
+      const lazyImages = document.querySelectorAll('.lazy-load[data-src]');
+
+      lazyImages.forEach(image => {
+        image.addEventListener('load', () => {
+          image.classList.add('loaded');
+        });
+
+        // Use IntersectionObserver to load images when visible
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src;
+              observer.unobserve(img);
+            }
+          });
+        });
+
+        observer.observe(image);
+      });
+    });
+  </script>
+</body>
+</html>

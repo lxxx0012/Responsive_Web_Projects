@@ -1,0 +1,341 @@
+/*
+====================================================================
+  1. Base Styles & Typography
+====================================================================
+*/
+:root {
+    --primary-color: #A34A2F; /* Warm, earthy tone for accents */
+    --secondary-color: #333;  /* Dark text */
+    --background-color: #F8F8F8; /* Light background */
+    --white: #FFFFFF;
+    --font-serif: 'Georgia', serif;
+    --font-sans: 'Helvetica Neue', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--secondary-color);
+    background-color: var(--background-color);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    color: var(--primary-color);
+    margin-bottom: 0.5em;
+}
+
+/*
+====================================================================
+  2. SPA Visibility & Layout
+====================================================================
+*/
+.page-section {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Transition for smoother view switching (optional) */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Core visibility rules for SPA */
+.hidden-section {
+    display: none;
+    opacity: 0;
+}
+
+.active-section {
+    display: block;
+    opacity: 1;
+}
+
+/*
+====================================================================
+  3. Header & Navigation
+====================================================================
+*/
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 5%;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-family: var(--font-serif);
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 500;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/*
+====================================================================
+  4. Menu Section Styling (Customer View)
+====================================================================
+*/
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.menu-item {
+    background-color: var(--white);
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.menu-item h3 {
+    color: var(--secondary-color);
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+.menu-item .price {
+    display: block;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+/*
+====================================================================
+  5. Form & Button Styles (Used by Reservations and Admin)
+====================================================================
+*/
+#reservation-form,
+#add-item-form {
+    max-width: 600px;
+    margin: 30px 0;
+    padding: 30px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.btn-primary, .btn-secondary, .btn-danger {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: opacity 0.3s;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 100%; /* For form submission button */
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: #555;
+    color: var(--white);
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Red */
+    color: var(--white);
+}
+
+/*
+====================================================================
+  6. Contact & Map Styling
+====================================================================
+*/
+.contact-info {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.map-container {
+    margin-top: 20px;
+    border: 5px solid var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+    display: block;
+}
+
+/*
+====================================================================
+  7. Admin Dashboard Specific Styling
+====================================================================
+*/
+.admin-section-style {
+    background-color: #fff3e0;
+    border-top: 5px solid var(--primary-color);
+}
+
+.warning-note {
+    color: #cc0000;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid #cc0000;
+    background-color: #fee;
+    margin-bottom: 20px;
+}
+
+.admin-menu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.admin-item-details {
+    flex-grow: 1;
+}
+
+.admin-item-details h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.admin-item-details .status-tag {
+    font-size: 0.8em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.status-visible {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-hidden {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.admin-actions button {
+    margin-left: 10px;
+}
+
+/*
+====================================================================
+  8. Footer
+====================================================================
+*/
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+/*
+====================================================================
+  9. Media Queries (Responsiveness)
+====================================================================
+*/
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav ul {
+        margin-top: 15px;
+        padding-bottom: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    .admin-menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .admin-actions {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .admin-actions button {
+        margin: 5px 0;
+        flex-grow: 1;
+    }
+}

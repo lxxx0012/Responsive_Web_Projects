@@ -1,0 +1,102 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  header {
+    text-align: center;
+    background: #007BFF;
+    color: white;
+    padding: 20px;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  header p {
+    margin: 10px 0 0;
+  }
+  
+  /* Common section styling */
+  section {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .parallax {
+    position: relative;
+    background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your own image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    color: white;
+  }
+  
+  .foreground {
+    position: absolute;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
+  }
+  
+  .content {
+    background: #f4f4f4;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  /* Footer Styling */
+  footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    header, footer {
+      padding: 15px;
+    }
+  
+    header h1 {
+      font-size: 1.8rem;
+    }
+  
+    .content {
+      padding: 15px;
+    }
+  
+    .foreground h2 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.5rem;
+    }
+  
+    header p {
+      font-size: 1rem;
+    }
+  
+    .foreground h2 {
+      font-size: 1.5rem;
+    }
+  
+    .content {
+      margin: 20px auto;
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+  }
+  

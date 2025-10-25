@@ -1,0 +1,90 @@
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  header {
+    text-align: center;
+    padding: 1em;
+    background-color: #f8f8f8;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    padding: 16px;
+    background-color: #fff;
+  }
+  
+  .product-card img {
+    max-width: 100%; /* Ensures the image fits within the container */
+    max-height: 300px; /* Limits the image height */
+    height: auto; /* Maintains the aspect ratio */
+    object-fit: cover; /* Crops the image uniformly to fit */
+    border-radius: 8px; /* Adds rounded corners */
+    display: block; /* Removes inline gaps below the image */
+    margin: 0 auto; /* Centers the image horizontally */
+  }
+  
+  .product-card h2 {
+    font-size: 1.2em;
+  }
+  
+  .product-card p {
+    color: #555;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Media Queries for Additional Responsiveness */
+  @media (max-width: 768px) {
+    body {
+      font-size: 90%; /* Slightly smaller font size for smaller devices */
+    }
+  
+    .product-card {
+      padding: 12px; /* Reduces padding to save space */
+    }
+  
+    button {
+      padding: 8px 16px; /* Adjusts button size for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header {
+      font-size: 1.5em; /* Adjusts header size for very small screens */
+    }
+  
+    .product-grid {
+      grid-template-columns: 1fr; /* Switches to a single column layout */
+    }
+  
+    .product-card img {
+      max-height: 200px; /* Further limits image height for small screens */
+      border-radius: 5px; /* Slightly reduces rounded corners */
+    }
+  }
+  

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Animations</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    section {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    /* CSS for Button Hover Animation */
+    .animated-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: white;
+      background: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .animated-button:hover {
+      transform: scale(1.2);
+    }
+
+    /* CSS for Box Animation */
+    .box {
+      width: 50px;
+      height: 50px;
+      background: #007BFF;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    /* CSS for Fade-In Scroll Animation */
+    .fade-in-section {
+      opacity: 0;
+      transition: opacity 1.5s ease-out;
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      section {
+        padding: 10px;
+      }
+      .animated-button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Button Hover Animation -->
+  <section>
+    <h2>Button Hover Animation</h2>
+    <button class="animated-button">Hover Me</button>
+  </section>
+
+  <!-- SVG Animation -->
+  <section>
+    <h2>SVG Animation</h2>
+    <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: auto;">
+      <circle cx="50" cy="50" r="40" stroke="#007BFF" stroke-width="5" fill="none">
+        <animate 
+          attributeName="stroke-dashoffset" 
+          from="0" 
+          to="502" 
+          dur="2s" 
+          repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </section>
+
+  <!-- Box Animation Using GSAP -->
+  <section>
+    <h2>Box Animation (GSAP)</h2>
+    <div class="box"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <div class="box"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+  // Ensure the DOM is fully loaded before animating
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.to(".box", {
+      x: "100vw", // Moves box across the screen
+      duration: 2,
+      repeat: -1, // Infinite loop
+      yoyo: true // Returns to original position
+    });
+  });
+</script>
+  </section>
+
+  <!-- Scroll-Based Animation -->
+  <section>
+    <h2>Scroll-Based Animation</h2>
+    <div class="fade-in-section">Hello, World!</div>
+
+<script>
+  // Intersection Observer for scroll-triggered animations
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+
+    const sections = document.querySelectorAll('.fade-in-section');
+    sections.forEach((section) => observer.observe(section));
+  });
+</script>
+  </section>
+</body>
+</html>

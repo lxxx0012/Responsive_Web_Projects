@@ -1,0 +1,39 @@
+/* General Layout */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+/* Image Container */
+.image-container {
+    position: relative; /* Position context for children */
+    width: 400px;
+    height: 600px;
+    overflow: hidden;
+}
+
+/* Image Styling */
+img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Ensure it's below the canvas */
+}
+
+/* Mask Styling (placeholder for canvas) */
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Above the image */
+    pointer-events: none; /* Allow interaction with the container */
+}

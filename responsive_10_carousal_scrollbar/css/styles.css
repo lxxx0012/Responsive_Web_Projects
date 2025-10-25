@@ -1,0 +1,98 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.hero {
+    text-align: center;
+    background: #f4f4f4;
+    padding: 50px 20px;
+}
+
+.carousel {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel-item {
+    flex: 0 0 300px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    scroll-snap-align: start;
+}
+
+footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero {
+        padding: 30px 10px;
+    }
+    .carousel {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .carousel-item {
+        flex: 0 0 auto;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px 10px;
+    }
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .carousel-item {
+        padding: 5px;
+    }
+}

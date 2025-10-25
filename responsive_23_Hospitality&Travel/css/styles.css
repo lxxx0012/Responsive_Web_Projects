@@ -1,0 +1,136 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #004080;
+    color: white;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 50px;
+    background: url('images/hero-bg.jpg') no-repeat center center/cover;
+    color: white;
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .destinations {
+    padding: 20px;
+  }
+  
+  .destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .destination-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .destination-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .booking-form {
+    padding: 20px;
+    background-color: #f8f8f8;
+  }
+  
+  .booking-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .submit-button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #004080;
+    color: white;
+  }
+  
+  /* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .hero {
+      padding: 30px;
+    }
+  
+    .destination-card p {
+      font-size: 0.9em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero h2 {
+      font-size: 1.5em;
+    }
+  
+    .destination-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .destination-card img {
+      max-height: 200px; /* Limit image height on smaller screens */
+    }
+  
+    .booking-form {
+      padding: 15px;
+    }
+  }

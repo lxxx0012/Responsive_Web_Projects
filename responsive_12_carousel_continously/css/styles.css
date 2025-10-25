@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 20px 0;
+}
+
+.carousel, .carousel-track, .carousel-item {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Includes padding and border in width/height calculations */
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden; /* Hides anything outside the visible container */
+    max-width: 800px; /* Set a maximum width for the carousel */
+    margin: 0 auto; /* Centers the entire carousel on the page */
+    height: 400px; /* Adjust the height of the carousel as needed */
+}
+
+
+.carousel-track {
+    display: flex;
+    justify-content: center; /*Centers the images horizontally */
+    width: calc(100% * 4); /* Adjust width based on the number of items */
+    animation: scroll 10s linear infinite; /* Continuous scroll animaiton */
+}
+
+.carousel-item {
+    flex: 0 0 100%; /* sEah image takes up 100% of the container */
+    max-width: 100%; /* Prevents images from exceeding the container width */
+    max-height: 100%; /* Adjust height as needed */
+    object-fit: cover; /* Scales images without distrotion */
+    display: block; /* Ensures images are treated as block-level elements */
+}
+
+/* Keyframes for scrolling effect */
+@keyframes scroll {
+    0% {
+        transform: translateX(0)
+    }
+    100% {
+        tranform: translateX(-100%);
+    }
+}
+
+/* Responsive design for smaller devices */
+@media (max-width: 768px) {
+    .carousel {
+        max-width: 100%; /* Allow the carousel to shrink on small screens; */
+        height: 250px /* Adjust the height for smaller devices */;
+    }
+    .carousel-item {
+        max-height: 250px; /* Adjust height as needed */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        max-height: 150px; /* Adjust height as needed */
+    }
+}

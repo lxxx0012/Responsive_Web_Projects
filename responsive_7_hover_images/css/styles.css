@@ -1,0 +1,129 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+/* Main Section */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adds space between image containers */
+    flex-wrap: wrap; /* Ensure images wrap on the next row on smaller screen */
+    padding: 20px;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+}
+
+/* Image Container */
+.image-container {
+    position: relative;
+    width: 400px; /* Responsive width */
+    max-width: 600px; /* Max width for large screens */
+    aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+    overflow: hidden;
+    border: 2px solid #ddd; /* Optional border for styling */
+    border-radius: 10px; /* Optional rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow */
+    margin: 10px; /* Add space around each image */
+}
+
+/* Image Styling */
+img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures proportional scaling */
+    z-index: 1; /* Keeps the image below the red overlay */
+}
+
+/* Mask Overlay */
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 1); /* Red overlay */
+    z-index: 2; /* Ensure it sits above the image */
+    pointer-events: none; /* Allows interactions to pass through */
+}
+
+/* On Hover */
+.image-container:hover .mask {
+    background-color: transparent; /* Reveal the image underneath */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem; /* Adjust font size for smaller devices */
+    }
+
+    .image-container {
+        width: 150px; /* Use more width on tablet screens */
+    }
+
+    main {
+        gap: 15px; /* Reduce gap for smaller scsreens */
+    }
+
+    footer p {
+        font-size: 0.9rem; /* Adjust footer text size */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.2rem; /* Further adjustments for very small screens */
+    }
+
+    .image-container {
+        width: 120px; /* Further reduce image size for mobile */
+    }
+
+    main {
+        gap: 10px; /*Adjust gap for tighter spaces on mobile */
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+}

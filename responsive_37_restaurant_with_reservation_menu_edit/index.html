@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>The Culinary Corner - Restaurant</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">The Culinary Corner</div>
+            <ul>
+                <li><a href="#" onclick="showSection('menu')">Menu</a></li>
+                <li><a href="#" onclick="showSection('reservations')">Reservations</a></li>
+                <li><a href="#" onclick="showSection('Contact')">Contact</a></li>
+                <li><a href="#" onclick="toggleAdminView();" id="admin-toggle">Admin View (DEV)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="menu" class="page-section">
+            <h1>Our Delicious Menu</h1>
+            <div id="menu-list" class="menu-grid">
+                <p>Loading menu ... </p>
+            </div>
+        </section>
+
+        <section id="reservations" class="page-section hidden-section">
+            <h1>Book a Table</h1>
+            <p>Use the form below to secure your spot. We look forward to seeing you!</p>
+
+            <form id="reservation-form">
+                <div class="form-group">
+                    <label for="res-date">Date: </label>
+                    <input type="date" id="res-date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="res-time">Time: </label>
+                    <input type="time" id="res-time" name="time" min="17:00" max="22:00">
+                </div>
+
+                <div class="form-group">
+                    <label for="res-size">Party Size: </label>
+                    <input type="number" id="res-size" name="size" min="1" max="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="res-name">Your Name: </label>
+                    <input type="text" id="res-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="res-email">Email: </label>
+                    <input type="email" id="res-email" name="email" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Check Availability & Book</button>
+            </form>
+
+            <p id="res-message" style="margin-top: 15px; font-weight: bold;"></p>
+        </section>
+        
+        <section id="contact" class="page-section hidden-section">
+            <h1>Find & Contact US</h1>
+
+            <div class="contact-info">
+                <p><strong>Address: </strong> 456 Delicious Lane, Food City, CA 90210</p>
+                <p><strong>Phone: </strong> (416) 555-FOOD</p>
+                <p><strong>Email: </strong> reservations@culinarycorner.com</p>
+                <p><strong>Hours: </strong> Mon - Sun: 5:00 PM - 23:00 PM</p>
+            </div>
+        </section>
+
+        <div class="map-container">
+            <h2>Location Map</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1!2d0!3d0!0!2m3!1f0!2f0!3f0!3m2!1s0x0:0x0!2zNTCwMTggSGFsb2NlbiBXYXksIEhhbG9jZW4gQ2l0eSwgU1c!5e0!3m2!1sen!2sus!4v1700000000000"
+                width="100%"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <section id="admin" class="page-section hidden-section admin-section-style">
+        <h1>Restaurant Management Dashboard</h1>
+        <p class="warning-note"> **Developer Note:** This dashboard is unsecured and for local testing only. </p>
+
+        <div class="admin-panel">
+            <h2>Add New Menu Item</h2>
+            <form id="add-item-form">
+                <div class="form-group">
+                    <label for="new-name">Name: </label>
+                    <input type="text" id="new-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-desc">Description: </label>
+                    <input type="text" id="new-desc" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-price">Price ($): </label>
+                    <input type="number" id="new-price" step="0.01" required>
+                </div>
+                <button type="submit" class="btn-primary">Add Item</button>
+            </form>
+
+            <hr style="background-color: #ddd;">
+
+            <h2 style="margin-top: 30px;">Manage Menu Items</h2>
+            <div id="admin-menu-list" class="admin-menu-grid">
+                <p>Loading items for management ... </p>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 The Culinary Corner. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Helper function for navigating between sections (SPA routing)
+        function showSection(sectionId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('.hidden-section');
+                section.classList.remove('.action-section');
+            });
+            document.getElementById(sectionId).classList.add('action-section');
+            document.getElementById(sectionId).classList.remove('hidden-section');
+
+            // Re-render admin or customer menu when switching views
+            if (sectionId === 'menu') {
+                renderCustomerMenu();
+            } else if (sectionId === 'admin') {
+                renderAdminMenu();
+            }
+        }
+
+        // Toggles the visibility of the Admin Dashboard
+        function toggleAdminView() {
+            const adminSection = document.getElementById('admin');
+            const adminButton = document.getElementById('admin-toggle');
+
+            if (adminSection.classList.contains('hidden-section')) {
+                showSection('admin');
+                adminButton.textContent = 'Hide Admin';
+            } else {
+                showSection('menu');
+                adminButton.textContent = 'Admin Login';
+            }
+        }
+
+        // Initialize the view on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('menu');
+        })
+    </script>
+
+    <script src="scripts/menu.js"></script>
+    <script src="scripts/reservations.js"></script>
+</body>
+</html>

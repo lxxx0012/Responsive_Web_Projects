@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Fleeing Button</title>
+    <!-- We're using the Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* All CSS is placed here within the style tags */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .login-container, .fleeing-game-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 2.5rem;
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+        }
+
+        .fleeing-game-container {
+            height: 100vh;
+            width: 100vw;
+            max-width: none;
+            max-height: none;
+            padding: 0;
+            display: none; /* Initially hidden */
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        #fleeing-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease-out;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #message-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateY(-100%);
+            background-color: #ffffff;
+            color: #4b5563;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.6);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            text-align: center;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="login-form-container" class="login-container">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Login</h1>
+        <form id="login-form" class="space-y-4">
+            <div>
+                <input type="text" id="username" placeholder="Username" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-blue-500">
+            </div>
+            <div>
+                <input type="password" id="password" placeholder="Password" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button type="submit" id="login-button" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300">
+                Login
+            </button>
+        </form>
+        <div id="login-message" class="mt-4 text-red-500 font-medium"></div>
+    </div>
+
+    <!-- Fleeing Button Game Container (Initially hidden) -->
+    <div id="fleeing-game-container" class="fleeing-game-container">
+        <div class="container">
+            <button id="fleeing-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+                Try to catch me!
+            </button>
+            <div id="message-box"></div>
+        </div>
+    </div>
+
+    <script>
+        // All JavaScript is placed here within the script tags
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const loginFormContainer = document.getElementById('login-form-container');
+            const fleeingGameContainer = document.getElementById('fleeing-game-container');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const loginButton = document.getElementById('login-button');
+            const loginMessage = document.getElementById('login-message');
+
+            const button = document.getElementById('fleeing-button');
+            const container = document.querySelector('.container');
+            const messageBox = document.getElementById('message-box');
+
+            // Hardcoded credentials for this example
+            const correctUsername = "user";
+            const correctPassword = "password";
+            const maxAttempts = 3;
+            let loginAttempts = 0;
+
+            // Fleeing button game logic
+            const setupFleeingButtonGame = () => {
+                const dangerRadius = 150;
+                const initialMessage = "I'm just a button, minding my own business.";
+                messageBox.textContent = initialMessage;
+                messageBox.style.opacity = 1;
+
+                container.addEventListener('mousemove', (e) => {
+                    const buttonRect = button.getBoundingClientRect();
+                    const mouseX = e.clientX;
+                    const mouseY = e.clientY;
+
+                    const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+                    const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+
+                    const deltaX = mouseX - buttonCenterX;
+                    const deltaY = mouseY - buttonCenterY;
+
+                    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                    if (distance < dangerRadius) {
+                        const moveAwayX = (buttonCenterX - mouseX) / distance * (dangerRadius - distance);
+                        const moveAwayY = (buttonCenterY - mouseY) / distance * (dangerRadius - distance);
+
+                        let newX = buttonRect.left + moveAwayX;
+                        let newY = buttonRect.top + moveAwayY;
+
+                        const containerRect = container.getBoundingClientRect();
+                        newX = Math.max(containerRect.left, Math.min(newX, containerRect.right - buttonRect.width));
+                        newY = Math.max(containerRect.top, Math.min(newY, containerRect.bottom - buttonRect.height));
+
+                        button.style.left = `${newX}px`;
+                        button.style.top = `${newY}px`;
+
+                        messageBox.style.opacity = 1;
+                        messageBox.textContent = "Hey, give me some space!";
+                    } else {
+                            messageBox.style.opacity = 1;
+                            messageBox.textContent = initialMessage;
+                    }
+                });
+
+                container.addEventListener('mouseleave', () => {
+                    messageBox.textContent = initialMessage;
+                });
+            };
+
+            // Login form submission handler
+            loginButton.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const username = usernameInput.value;
+                const password = passwordInput.value;
+
+                if (username === correctUsername && password === correctPassword) {
+                    // Successful login
+                    loginFormContainer.style.display = 'none';
+                    fleeingGameContainer.style.display = 'block';
+                    setupFleeingButtonGame();
+                } else {
+                    // Failed login
+                    loginAttempts++;
+                    if (loginAttempts >= maxAttempts) {
+                        loginButton.disabled = true;
+                        loginButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                        loginButton.classList.add('bg-gray-400');
+                        loginButton.textContent = "Account Locked";
+                        loginMessage.textContent = "Too many failed attempts. Your account is locked.";
+                    } else {
+                        const remaining = maxAttempts - loginAttempts;
+                        loginMessage.textContent = `Invalid username or password. You have ${remaining} attempts remaining.`;
+                    }
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

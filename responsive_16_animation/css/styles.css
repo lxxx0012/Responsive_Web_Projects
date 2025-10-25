@@ -1,0 +1,65 @@
+
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    section {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    /* CSS for Button Hover Animation */
+    .animated-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: white;
+      background: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .animated-button:hover {
+      transform: scale(1.2);
+    }
+
+    /* CSS for Box Animation */
+    .box {
+      width: 50px;
+      height: 50px;
+      background: #007BFF;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* CSS for Fade-In Scroll Animation */
+    .fade-in-section {
+      opacity: 0;
+      transition: opacity 1.5s ease-out;
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      section {
+        padding: 10px;
+      }
+      .animated-button {
+        font-size: 16px;
+      }
+    }

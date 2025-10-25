@@ -1,0 +1,91 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #fff, #e0e0e0);
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .carousel-container {
+    perspective: 1000px;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    animation: rotate 10s linear infinite; /* Automatic rotation */
+  }
+  
+  .carousel img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    transform-origin: 0 0 150px; /* Position around the circle */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .carousel img:nth-child(1) { transform: rotateY(0deg) translateZ(150px); }
+  .carousel img:nth-child(2) { transform: rotateY(60deg) translateZ(150px); }
+  .carousel img:nth-child(3) { transform: rotateY(120deg) translateZ(150px); }
+  .carousel img:nth-child(4) { transform: rotateY(180deg) translateZ(150px); }
+  .carousel img:nth-child(5) { transform: rotateY(240deg) translateZ(150px); }
+  .carousel img:nth-child(6) { transform: rotateY(300deg) translateZ(150px); }
+  
+  @keyframes rotate {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  .carousel {
+    width: 60vw; /* Set width dynamically based on viewport */
+    height: 60vw; /* Maintain the aspect ratio */
+  }
+  
+  .carousel img {
+    width: 10vw; /* Scale dynamically with the carousel */
+    height: 10vw;
+  }
+  
+  @media (max-width: 768px) {
+    .carousel {
+      width: 80vw;
+      height: 80vw;
+    }
+  
+    .carousel img {
+      width: 12vw;
+      height: 12vw;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .carousel {
+      width: 90vw;
+      height: 90vw;
+    }
+  
+    .carousel img {
+      width: 14vw;
+      height: 14vw;
+    }
+  }
+  
